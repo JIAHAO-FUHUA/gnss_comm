@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(gnss_comm)
 
 set(CMAKE_BUILD_TYPE "release")
-set(CMAKE_CXX_FLAGS "-std=c++11 ")
+set(CMAKE_CXX_FLAGS "-std=c++14 ")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -fPIC")
 
 find_package(catkin REQUIRED COMPONENTS
@@ -66,6 +66,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/
 )
+add_compile_definitions(GLOG_USE_GLOG_EXPORT)
 
 file(GLOB_RECURSE source_files ${PROJECT_SOURCE_DIR}/src/*.cpp)
 add_library(${PROJECT_NAME} ${source_files})
